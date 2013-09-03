@@ -1,5 +1,7 @@
-#include "HelloWorldScene.h"
-
+#include "MainMenu.h"
+#include <cstdio>
+#include "Utils/VisibleRect.h"
+#define LINE_SPACE          40
 USING_NS_CC;
 
 CCScene* MainMenu::scene()
@@ -46,10 +48,20 @@ bool MainMenu::init()
 
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
+    CCMenu* mMenu = CCMenu::create();
+    int var;
+	char menuItemText[20];
+        for (var = 0; var < 5; ++var) {
+    		snprintf(menuItemText, sizeof(int) * 3, "Menu %d", var);
+        	CCLabelTTF* label = CCLabelTTF::create(menuItemText, "Arial", 24);
 
-
-    pMenu->setPosition(CCPointZero);
+            CCMenuItemLabel* pMenuItem = CCMenuItemLabel::create(label, this, menu_selector(MainMenu::menuCloseCallback));
+            mMenu->addChild(pMenuItem,2);
+            pMenuItem->setPosition( ccp( VisibleRect::center().x, (VisibleRect::top().y - (var + 1) * LINE_SPACE) ));
+    	}
+    mMenu->setPosition( CCPointZero );
     this->addChild(pMenu, 1);
+    this->addChild(mMenu, 2);
 
     /////////////////////////////
     // 3. add your codes below...
@@ -65,6 +77,7 @@ bool MainMenu::init()
 
     // add the label as a child to this layer
     this->addChild(pLabel, 1);
+
 /*
     // add "HelloWorld" splash screen"
     CCSprite* pSprite = CCSprite::create("HelloWorld.png");
@@ -116,7 +129,6 @@ TestController::TestController()
 
 }
 */
-
 
 
 

@@ -1,5 +1,5 @@
-#ifndef __HELLOWORLD_SCENE_H__
-#define __HELLOWORLD_SCENE_H__
+#ifndef __MAIN_MENU_SCENE_H__
+#define __MAIN_MENU_SCENE_H__
 
 #include "cocos2d.h"
 
@@ -11,7 +11,6 @@ public:
 
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::CCScene* scene();
-    
     // a selector callback
     void menuCloseCallback(CCObject* pSender);
     
@@ -19,4 +18,4 @@ public:
     CREATE_FUNC(MainMenu);
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif // __MAIN_MENU_SCENE_H__
